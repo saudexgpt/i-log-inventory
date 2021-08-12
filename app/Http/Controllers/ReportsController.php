@@ -121,6 +121,11 @@ class ReportsController extends Controller
     //         200
     //     );
     // }
+    private function days_in_month($month, $year)
+    {
+        // calculate number of days in a month
+        return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31);
+    }
     public function productsInStockGraph(Request $request)
     {
         $warehouse_id = $request->warehouse_id;
@@ -290,7 +295,7 @@ class ReportsController extends Controller
             case 'month':
                 $month = date('m', strtotime($date_from));
                 $year = date('Y', strtotime($date_from));
-                $no_of_days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+                $no_of_days_in_month = $this->days_in_month(CAL_GREGORIAN, $month, $year);
                 $categories = [];
                 $approved = [];
                 for ($i = 1; $i <= $no_of_days_in_month; $i++) {
@@ -330,7 +335,7 @@ class ReportsController extends Controller
             case 'year':
                 $month = date('m', strtotime($date_from));
                 $year = date('Y', strtotime($date_from));
-                $no_of_days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+                $no_of_days_in_month = $this->days_in_month($month, $year);
                 $categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 $approved = [];
                 for ($i = 1; $i <= 12; $i++) {
