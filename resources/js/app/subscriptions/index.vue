@@ -60,7 +60,7 @@ export default {
   },
   data(){
     return {
-      paystackkey: 'pk_test_a32396d591431a2c57e4c68a3cfa8fb15502a4b3', // paystack public key
+      paystackkey: process.env.MIX_PAYSTACK_API_KEY, // 'pk_test_a32396d591431a2c57e4c68a3cfa8fb15502a4b3', // paystack public key
       email: '', // Customer email
       amount: 0, // in kobo
       amount_due: 0,

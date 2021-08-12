@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Warehouse Management System</title>
 
-    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/favicon.png">
+    <link rel="icon" sizes="192x192"  href="/favicon.ico">
     <link rel="manifest" href="/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
