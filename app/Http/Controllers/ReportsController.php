@@ -295,7 +295,7 @@ class ReportsController extends Controller
             case 'month':
                 $month = date('m', strtotime($date_from));
                 $year = date('Y', strtotime($date_from));
-                $no_of_days_in_month = $this->days_in_month(CAL_GREGORIAN, $month, $year);
+                $no_of_days_in_month = $this->days_in_month($month, $year);
                 $categories = [];
                 $approved = [];
                 for ($i = 1; $i <= $no_of_days_in_month; $i++) {
