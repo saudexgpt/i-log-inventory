@@ -30,8 +30,8 @@
                 <el-option v-for="(type, type_index) in params.package_types" :key="type_index" :value="type" :label="type" />
 
               </el-select>
-              <label for="">Volume per {{ form.package_type }} in {{ params.unit_of_measurement[form.unit_of_measurement] }}</label> <br>
-              <el-input-number v-model="form.volume_per_package" type="number" :precision="2" :step="0.1" :min="1" placeholder="Volume per unit" class="span" />
+              <!-- <label for="">Volume per {{ form.package_type }} in {{ params.unit_of_measurement[form.unit_of_measurement] }}</label> <br>
+              <el-input-number v-model="form.volume_per_package" type="number" :precision="2" :step="0.1" :min="1" placeholder="Volume per unit" class="span" /> -->
             </el-col>
             <el-col :xs="24" :sm="12" :md="12">
               <!-- <label for="">Cost Price</label>
