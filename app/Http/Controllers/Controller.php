@@ -105,8 +105,8 @@ class Controller extends BaseController
         $automobile_engineers = AutomobileEngineer::get();
         $engine_types = ['Diesel', 'Petrol', 'Kerosene'];
         $expense_types = ['Insurance', 'Maintenance / Repairs', 'Fuel'];
-        $package_types = ['BUNDLE', 'BUCKET', 'PACK', 'ROD', 'SET', 'SHEET'];
-        $unit_of_measurement = ["Ft" => "Feet", "''" => "Inches", 'L' => 'Litres',  'M' => 'Metres', 'Kg' => 'Kilogram'];
+        $package_types = ["", 'BUNDLE', 'BUCKET', 'PACK', 'ROD', 'SET', 'SHEET'];
+        $unit_of_measurement = ["" => "", "Ft" => "Feet", "''" => "Inches", 'L' => 'Litres',  'M' => 'Metres', 'Kg' => 'Kilogram'];
         $product_return_reasons = ['Product short-dated', 'Mass return - expired', 'Mass return - unexpired', 'Spillage', 'Others'];
         $teams = ['customer'];
         $dispatch_companies = ['COMPANY LOGISTICS', 'COURIER SERVICE', 'FOB (Free On Board)'];
