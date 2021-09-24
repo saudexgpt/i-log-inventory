@@ -61,7 +61,6 @@ export default {
   data(){
     return {
       paystackkey: process.env.MIX_PAYSTACK_API_KEY, // 'pk_test_a32396d591431a2c57e4c68a3cfa8fb15502a4b3', // paystack public key
-      email: '', // Customer email
       amount: 0, // in kobo
       amount_due: 0,
       currency: '₦',
@@ -123,6 +122,9 @@ export default {
     };
   },
   computed: {
+    email() {
+      return this.$store.getters.email;
+    },
     reference(){
       let text = '';
       const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -147,7 +149,6 @@ export default {
         this.sub_details = subscription_payment;
         this.amount = subscription_payment.amount_due * 100; // in kobo
       }
-      this.email = 'sammy4best@gmail.com';
     },
     callback: function(response){
       // console.log(response)
