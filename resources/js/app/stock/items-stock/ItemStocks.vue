@@ -29,7 +29,7 @@
       <br>
 
       <el-tabs v-model="activeActivity">
-        <el-tab-pane label="UNEXPIRED PRODUCTS" name="unexpired">
+        <el-tab-pane label="PRODUCTS IN STOCK" name="unexpired">
           <div class="box-header">
             <h4 class="box-title">{{ table_title }}</h4>
 
@@ -70,11 +70,11 @@
                 {{ (row.balance - row.reserved_for_supply) }} {{ formatPackageType(row.item.package_type) }}
 
               </div>
-              <div slot="expiry_date" slot-scope="{row}" :class="expiryFlag(moment(row.expiry_date).format('x'))">
+              <!-- <div slot="expiry_date" slot-scope="{row}" :class="expiryFlag(moment(row.expiry_date).format('x'))">
                 <span>
                   {{ moment(row.expiry_date).fromNow() }}
                 </span>
-              </div>
+              </div> -->
               <div slot="created_at" slot-scope="{row}">
                 {{ moment(row.created_at).fromNow() }}
               </div>
@@ -172,7 +172,7 @@ export default {
       warehouses: [],
       items_in_stock: [],
       expired_products: [],
-      columns: ['action', 'confirmer.name', 'item.name', 'batch_no', 'expiry_date', 'quantity', 'in_transit', 'supplied', /* 'expired',*/ 'in_stock', 'reserved_for_supply', 'balance', 'created_at', 'stocker.name'],
+      columns: ['action', 'confirmer.name', 'item.name', 'batch_no', /* 'expiry_date',*/ 'quantity', 'in_transit', 'supplied', /* 'expired',*/ 'in_stock', 'reserved_for_supply', 'balance', 'created_at', 'stocker.name'],
 
       options: {
         headings: {
@@ -186,7 +186,7 @@ export default {
           reserved_for_supply: 'For Supply',
           in_stock: 'PHYS. Stock',
           balance: 'Main Bal.',
-          expiry_date: 'Expires',
+          // expiry_date: 'Expires',
           created_at: 'Created',
 
           // id: 'S/N',
@@ -200,10 +200,10 @@ export default {
           filter: 'Search:',
         },
         // editableColumns:['name', 'category.name', 'sku'],
-        sortable: ['item.name', 'batch_no', 'expiry_date'/* 'item.name', 'batch_no', 'quantity', 'in_transit', 'supplied', 'balance', 'expiry_date', 'created_at'*/],
-        filterable: ['stocker.name', 'item.name', 'batch_no', 'expiry_date', 'created_at'],
+        sortable: ['item.name', 'batch_no'/* 'expiry_date', 'item.name', 'batch_no', 'quantity', 'in_transit', 'supplied', 'balance', 'expiry_date', 'created_at'*/],
+        filterable: ['stocker.name', 'item.name', 'batch_no', 'created_at'],
       },
-      expired_columns: ['item.name', 'batch_no', 'quantity', /* 'destroyed', 'balance', */'expiry_date'],
+      expired_columns: ['item.name', 'batch_no', 'quantity'],
 
       expired_options: {
         headings: {
@@ -411,8 +411,8 @@ export default {
       this.downloadLoading = true;
       import('@/vendor/Export2Excel').then(excel => {
         const multiHeader = [[this.expired_title, '', '', '', '']];
-        const tHeader = ['Product', 'Batch No.', 'Quantity', 'Expiry Date'];
-        const filterVal = ['item.name', 'batch_no', 'quantity', 'expiry_date'];
+        const tHeader = ['Product', 'Batch No.', 'Quantity'];
+        const filterVal = ['item.name', 'batch_no', 'quantity'];
         const list = this.items_in_stock;
         const data = this.formatJson(filterVal, list);
         excel.export_json_to_excel({

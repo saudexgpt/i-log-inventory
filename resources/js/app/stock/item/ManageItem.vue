@@ -61,14 +61,14 @@ export default {
     return {
       categories: [],
       items: [],
-      columns: ['action', 'name', 'category.name', 'package_type', 'volume_per_package', 'price.sale_price'],
+      columns: ['action', 'name', 'category.name', 'package_type', /* 'volume_per_package',*/ 'price.sale_price'],
 
       options: {
         headings: {
           name: 'Name',
           'category.name': 'Category',
           package_type: 'Package Type',
-          volume_per_package: 'Volume per package',
+          // volume_per_package: 'Volume per package',
           'price.sale_price': 'Rate',
           // id: 'S/N',
         },
